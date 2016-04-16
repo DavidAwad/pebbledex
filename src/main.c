@@ -78,7 +78,7 @@ static void select_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index,
       progress_bar_window_push();
       break;
     case 3: // debug option in menu
-      pkmn_window_push(2);
+      pkmn_window_push(2); // load ivysaur as a shitty debug
       break;
     default:
       break;
