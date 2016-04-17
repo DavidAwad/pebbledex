@@ -12,7 +12,7 @@
 #include "windows/checkbox_window.h"
 #include "windows/pokemon_window.h"
 
-#define NUM_WINDOWS 4
+#define NUM_WINDOWS 3
 
 static Window *s_main_window;
 static MenuLayer *s_menu_layer;
@@ -21,13 +21,24 @@ static uint16_t get_num_rows_callback(MenuLayer *menu_layer, uint16_t section_in
   return NUM_WINDOWS;
 }
 
-
+int rand_rng(int high, int low){
+    int ret;
+    ret = low + (rand() % (high - low));
+    return ret; 
+}
 
 static void draw_row_callback(GContext *ctx, const Layer *cell_layer, MenuIndex *cell_index, void *context) {
   switch(cell_index->row) {
     case 0:
-      menu_cell_basic_draw(ctx, cell_layer, "Select Pokemon", NULL, NULL);
+      menu_cell_basic_draw(ctx, cell_layer, "Select Pokémon", NULL, NULL);
       break;
+    case 1:
+      menu_cell_basic_draw(ctx, cell_layer, "Random  Pokémon", NULL, NULL);
+      break;
+    case 2:
+      menu_cell_basic_draw(ctx, cell_layer, "Settings", NULL, NULL);
+      break;
+    /*
     case 1:
       menu_cell_basic_draw(ctx, cell_layer, "Text Animation", NULL, NULL);
       break;
@@ -37,6 +48,7 @@ static void draw_row_callback(GContext *ctx, const Layer *cell_layer, MenuIndex 
     case 3:
       menu_cell_basic_draw(ctx, cell_layer, "Debug", NULL, NULL);
       break;
+      */
     default:
       break;
   }
@@ -71,6 +83,13 @@ static void select_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index,
         pin_window_push(pin_window, true);
       }
       break;
+    case 1: // debug option in menu
+      pkmn_window_push(rand_rng(1, 241)); 
+      break;
+    case 2: // show some text
+      text_animation_window_push();
+      break;
+    /*
     case 1:
       text_animation_window_push();
       break;
@@ -80,6 +99,7 @@ static void select_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index,
     case 3: // debug option in menu
       pkmn_window_push(2); // load ivysaur as a shitty debug
       break;
+    */
     default:
       break;
   }

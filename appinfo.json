@@ -1,8 +1,8 @@
 {
   "uuid": "ebf152ca-f3ee-4cad-ac70-56f780edc837",
-  "shortName": "dex",
+  "shortName": "Pebbledex",
   "longName": "Pebbledex",
-  "companyName": "MakeAwesomeHappen",
+  "companyName": "Davidawad.com",
   "versionLabel": "1.0",
   "sdkVersion": "3",
   "targetPlatforms": ["aplite", "basalt", "chalk"],

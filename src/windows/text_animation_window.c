@@ -8,7 +8,7 @@ static Window *s_window;
 static TextLayer *s_text_layer;
 
 static AppTimer *s_timer;
-static char s_text[2][32];
+static char s_text[3][32];
 static uint8_t s_current_text;
 
 static void animate();
@@ -59,7 +59,7 @@ static void window_load(Window *window) {
 
   const GEdgeInsets text_insets = {.top = (bounds.size.h / 2) - 24};
   s_text_layer = text_layer_create(grect_inset(bounds, text_insets));
-  text_layer_set_text(s_text_layer, "Example text.");
+  text_layer_set_text(s_text_layer, "PebbleDex");
   text_layer_set_text_color(s_text_layer, GColorWhite);
   text_layer_set_background_color(s_text_layer, GColorClear);
   text_layer_set_font(s_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
@@ -81,8 +81,8 @@ static void window_disappear(Window *window) {
 }
 
 void text_animation_window_push() {
-  snprintf(s_text[0], sizeof(s_text[0]), "Some example text");
-  snprintf(s_text[1], sizeof(s_text[1]), "Some more example text");
+  snprintf(s_text[0], sizeof(s_text[0]), "< > with <3");
+  snprintf(s_text[1], sizeof(s_text[1]), "By David Awad");
   s_current_text = 0;
 
   if(!s_window) {

@@ -1,4 +1,4 @@
-PHONE = 172.31.52.37
+PHONE = 172.31.51.193
 
 all:
 	pebble build
@@ -8,7 +8,7 @@ logs:
 	pebble logs --phone $(PHONE)
 
 
-
-
+debug:	
+ 
 
 

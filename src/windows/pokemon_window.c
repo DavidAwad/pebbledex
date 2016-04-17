@@ -8,7 +8,7 @@
 // Pokemon Resource ID's, macros evaluated at 
 // compile time. 
 static uint8_t PKMN_ICONS[] = {
-    0, //Throwaway for  MissingNo
+    // RESOURCE_ID_0, Throwaway for  MissingNo
     RESOURCE_ID_1,
     RESOURCE_ID_2,
     RESOURCE_ID_3,
@@ -250,6 +250,19 @@ static uint8_t PKMN_ICONS[] = {
 	RESOURCE_ID_239,
 	RESOURCE_ID_240,
 	RESOURCE_ID_241,
+    /* full resource pack
+	RESOURCE_ID_242,
+	RESOURCE_ID_243,
+	RESOURCE_ID_244,
+	RESOURCE_ID_245,
+	RESOURCE_ID_246,
+	RESOURCE_ID_247,
+	RESOURCE_ID_248,
+	RESOURCE_ID_249,
+	RESOURCE_ID_250,
+	RESOURCE_ID_251
+    */
+    
 };
 
 // Window Variables
@@ -314,7 +327,7 @@ static void window_disappear(){
 }
 
 void pkmn_window_push(int pkmn_number){
-  //snprintf(s_text[0], sizeof(s_text[0]), "Bulbasaur!");
+  //`snprintf(s_text[0], sizeof(s_text[0]), "Bulbasaur!");
 
   if(!s_window) {
     s_window = window_create();

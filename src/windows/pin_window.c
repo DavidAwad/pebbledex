@@ -52,7 +52,7 @@ PinWindow* pin_window_create(PinWindowCallbacks callbacks) {
       // Main TextLayer
       const GEdgeInsets main_text_insets = {.top = 30};
       pin_window->main_text = text_layer_create(grect_inset(bounds, main_text_insets));
-      text_layer_set_text(pin_window->main_text, "PIN Required");
+      text_layer_set_text(pin_window->main_text, "Select Pokémon");
       text_layer_set_font(pin_window->main_text, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
       text_layer_set_text_alignment(pin_window->main_text, GTextAlignmentCenter);
       layer_add_child(window_layer, text_layer_get_layer(pin_window->main_text));
@@ -60,7 +60,7 @@ PinWindow* pin_window_create(PinWindowCallbacks callbacks) {
       // Sub TextLayer
       const GEdgeInsets sub_text_insets = {.top = 115, .right = 5, .bottom = 10, .left = 5};
       pin_window->sub_text = text_layer_create(grect_inset(bounds, sub_text_insets));
-      text_layer_set_text(pin_window->sub_text, "Enter your PIN to continue");
+      text_layer_set_text(pin_window->sub_text, "Pokédex ID number required");
       text_layer_set_text_alignment(pin_window->sub_text, GTextAlignmentCenter);
       text_layer_set_font(pin_window->sub_text, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
       layer_add_child(window_layer, text_layer_get_layer(pin_window->sub_text));
