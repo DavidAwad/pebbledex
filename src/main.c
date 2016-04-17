@@ -21,7 +21,7 @@ static uint16_t get_num_rows_callback(MenuLayer *menu_layer, uint16_t section_in
   return NUM_WINDOWS;
 }
 
-int rand_rng(int high, int low){
+int rand_rng(int low, int high){
     int ret;
     ret = low + (rand() % (high - low));
     return ret; 
