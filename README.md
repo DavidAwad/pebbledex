@@ -1,8 +1,20 @@
 ## PebbleDex
 
+Pebbledex is a pebble app
+
+![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/main.png?raw=true)
+
+![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/pid.png?raw=true)
+
+![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/sample.png?raw=true)
+
+
+
+## Setting up for Development
+
+If you've never developed a pebble app before, take a look at [this guide](https://github.com/DavidAwad/SimplePebble) to get off the ground. 
 
 Supports the first 241 pokemon because pebble places a limit of 512 kb!! 
-
 
 
 ## Useful Resources
