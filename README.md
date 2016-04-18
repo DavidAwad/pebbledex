@@ -1,8 +1,8 @@
 ## PebbleDex
 
-Pebbledex is a pebble app
+Pebbledex is a pokedex app for your pebble smartwatch. It keeps things simple. 
 
-| Tables   |      Are      |  Cool |
+| Install   |     Select      |  Dope |
 |----------|:-------------:|------:|
 |![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/main.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/pid.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/sample.png?raw=true) | 
 
@@ -13,7 +13,6 @@ Pebbledex is a pebble app
 If you've never developed a pebble app before, take a look at [this guide](https://github.com/DavidAwad/SimplePebble) to get off the ground. 
 
 Supports the first 241 pokemon because pebble places a limit of 512 kb!! 
-
 
 ## Useful Resources
 [pngcrush](http://pmt.sourceforge.net/pngcrush/)
