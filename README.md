@@ -2,11 +2,9 @@
 
 Pebbledex is a pebble app
 
-![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/main.png?raw=true)
-
-![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/pid.png?raw=true)
-
-![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/sample.png?raw=true)
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+|![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/main.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/pid.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/sample.png?raw=true) | 
 
 
 
