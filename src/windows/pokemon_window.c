@@ -8,7 +8,7 @@
 // Pokemon Resource ID's, macros evaluated at 
 // compile time. 
 static uint8_t PKMN_ICONS[] = {
-    // RESOURCE_ID_0, Throwaway for  MissingNo
+    0, // RESOURCE_ID_0, Throwaway for  MissingNo
     RESOURCE_ID_1,
     RESOURCE_ID_2,
     RESOURCE_ID_3,
