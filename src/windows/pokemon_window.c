@@ -2,13 +2,11 @@
  * Pokemon information screen
  */
 #include "text_animation_window.h"
+#include "util.h"
 
-// STATIC RESOURCES
-
-// Pokemon Resource ID's, macros evaluated at 
-// compile time. 
+// Pokemon Resource ID's, macros evaluated at compile time. 
 static uint8_t PKMN_ICONS[] = {
-    0, // RESOURCE_ID_0, Throwaway for  MissingNo
+    0, // RESOURCE_ID_0, TODO MissingNo
     RESOURCE_ID_1,
     RESOURCE_ID_2,
     RESOURCE_ID_3,
@@ -250,7 +248,7 @@ static uint8_t PKMN_ICONS[] = {
 	RESOURCE_ID_239,
 	RESOURCE_ID_240,
 	RESOURCE_ID_241,
-    /* full resource pack
+    /* resource pack prevents all resources
 	RESOURCE_ID_242,
 	RESOURCE_ID_243,
 	RESOURCE_ID_244,
@@ -261,38 +259,37 @@ static uint8_t PKMN_ICONS[] = {
 	RESOURCE_ID_249,
 	RESOURCE_ID_250,
 	RESOURCE_ID_251
-    */
-    
+    */ 
 };
 
 // Window Variables
 static Window *s_window;
+static TextLayer *s_text_layer;
 
 // Bitmap Variables
 static GBitmapSequence *s_sequence;
 static GBitmap *s_bitmap;
 static BitmapLayer *s_bitmap_layer;
 
-static void timer_handler(void *context) {
-  uint32_t next_delay;
+int pkmn_number; 
+uint32_t first_delay_ms = 10;
 
+static void timer_handler(void *context) {
+    uint32_t next_delay; 
   // Advance to the next APNG frame, and get the delay for this frame
   if(gbitmap_sequence_update_bitmap_next_frame(s_sequence, s_bitmap, &next_delay)) {
     // Set the new frame into the BitmapLayer
     bitmap_layer_set_bitmap(s_bitmap_layer, s_bitmap);
     layer_mark_dirty(bitmap_layer_get_layer(s_bitmap_layer));
 
-    // Timer for that frame's delay
+    // timer for that frame's delay
     app_timer_register(next_delay, timer_handler, NULL);
   }
 }
 
-
-static void animate(int pkmn_number){
-// perform all animation
-
+static void animate(){
     // create sequence to display series of frames of an apng
-    s_sequence = gbitmap_sequence_create_with_resource(PKMN_ICONS[ pkmn_number ]);
+    s_sequence = gbitmap_sequence_create_with_resource(PKMN_ICONS[pkmn_number]);
 
     // Create blank GBitmap using APNG frame size
     GSize frame_size = gbitmap_sequence_get_bitmap_size(s_sequence);
@@ -305,13 +302,24 @@ static void animate(int pkmn_number){
     // add child layer to s_window
     layer_add_child(window_get_root_layer(s_window), bitmap_layer_get_layer(s_bitmap_layer));
 
-    // timer for frame delay
-	uint32_t first_delay_ms = 10;
 	// Schedule a timer to advance the first frame
 	app_timer_register(first_delay_ms, timer_handler, NULL);
 }
 
 static void window_load(){
+  Layer *window_layer = window_get_root_layer(s_window);  
+  s_text_layer = text_layer_create(GRect(10, 10, 40, 40));
+
+  char snum[3];
+  itoa(pkmn_number, snum, 10);
+  APP_LOG(APP_LOG_LEVEL_INFO, "the integer is %d, str is %s", pkmn_number, snum); 
+
+  text_layer_set_text(s_text_layer, snum);
+  text_layer_set_text_color(s_text_layer, GColorFolly);
+  text_layer_set_background_color(s_text_layer, GColorWhite);
+  text_layer_set_font(s_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+  text_layer_set_text_alignment(s_text_layer, GTextAlignmentCenter);
+  layer_add_child(window_layer, text_layer_get_layer(s_text_layer));
 }
 
 static void window_unload(){
@@ -319,15 +327,15 @@ static void window_unload(){
     bitmap_layer_destroy(s_bitmap_layer);
     gbitmap_sequence_destroy(s_sequence);
     gbitmap_destroy(s_bitmap);
+    text_layer_destroy(s_text_layer);
     window_destroy(s_window);
-    s_window = NULL; 
+    s_window = NULL;
+    
 }
 
-static void window_disappear(){
-}
-
-void pkmn_window_push(int pkmn_number){
-  //`snprintf(s_text[0], sizeof(s_text[0]), "Bulbasaur!");
+void pkmn_window_push(int pkmn_num){
+  
+  pkmn_number = pkmn_num;
 
   if(!s_window) {
     s_window = window_create();
@@ -335,7 +343,6 @@ void pkmn_window_push(int pkmn_number){
     window_set_window_handlers(s_window, (WindowHandlers) {
       .load = window_load,
       .unload = window_unload,
-      .disappear = window_disappear
     });
   }
   window_stack_push(s_window, true);

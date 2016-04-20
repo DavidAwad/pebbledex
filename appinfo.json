@@ -3,7 +3,7 @@
   "shortName": "dex",
   "longName": "pebbledex",
   "companyName": "David Awad",
-  "versionLabel": "1.0",
+  "versionLabel": "0.5",
   "sdkVersion": "3",
   "targetPlatforms": ["aplite", "basalt", "chalk"],
   "enableMultiJS": true,
