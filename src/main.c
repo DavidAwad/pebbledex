@@ -64,7 +64,6 @@ static int16_t get_cell_height_callback(struct MenuLayer *menu_layer, MenuIndex 
 static void pin_complete_callback(PIN pin, void *context) {
   // callback function from pin, render pokedex entry with selected pkmn 
   APP_LOG(APP_LOG_LEVEL_INFO, "Pin was %d %d %d", pin.digits[0], pin.digits[1], pin.digits[2]);
-
   pin_window_pop((PinWindow*)context, true);
   
   int pkmn_number = 100*pin.digits[0] + 10*pin.digits[1] + pin.digits[2]; 
@@ -89,17 +88,6 @@ static void select_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index,
     case 2: // show some text
       text_animation_window_push();
       break;
-    /*
-    case 1:
-      text_animation_window_push();
-      break;
-    case 2:
-      progress_bar_window_push();
-      break;
-    case 3: // debug option in menu
-      pkmn_window_push(2); // load ivysaur as a shitty debug
-      break;
-    */
     default:
       break;
   }
@@ -138,11 +126,9 @@ static void init() {
   });
   // Show the Window on the watch, with animated=true
   window_stack_push(s_main_window, true);
-
 }
 
 static void deinit() {
-  // Destroy Window
   window_destroy(s_main_window);
 }
 
