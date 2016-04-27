@@ -1,4 +1,4 @@
-PHONE = 192.168.1.200
+PHONE = 172.31.50.248
 
 all:
 	pebble build

@@ -274,6 +274,8 @@ static BitmapLayer *s_bitmap_layer;
 int pkmn_number; 
 uint32_t first_delay_ms = 10;
 
+char *buffer = "123" ; 
+
 static void timer_handler(void *context) {
     uint32_t next_delay; 
   // Advance to the next APNG frame, and get the delay for this frame
@@ -314,7 +316,7 @@ static void window_load(){
   itoa(pkmn_number, snum, 10);
   APP_LOG(APP_LOG_LEVEL_INFO, "the integer is %d, str is %s", pkmn_number, snum); 
 
-  text_layer_set_text(s_text_layer, snum);
+  text_layer_set_text(s_text_layer, (snprintf(buffer, 4, "%d", pkmn_number) , buffer)  );
   text_layer_set_text_color(s_text_layer, GColorFolly);
   text_layer_set_background_color(s_text_layer, GColorWhite);
   text_layer_set_font(s_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
