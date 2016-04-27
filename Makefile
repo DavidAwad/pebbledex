@@ -9,6 +9,8 @@ logs:
 
 
 debug:	
- 
+
+screen: # make clean f_name
+	pebble screenshot --phone $(PHONE) ${f_name} 
 
 
