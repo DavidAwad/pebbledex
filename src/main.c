@@ -83,7 +83,7 @@ static void select_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index,
       }
       break;
     case 1: // debug option in menu
-      pkmn_window_push(rand_rng(1, 241)); 
+      pkmn_window_push(rand_rng(1, 151)); 
       break;
     case 2: // show some text
       text_animation_window_push();
