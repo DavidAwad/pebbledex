@@ -4,7 +4,7 @@ Pebbledex is a pokedex app for your pebble smartwatch. It keeps things simple.
 
 | Install   |     Select      |  Dope |
 |----------|:-------------:|------:|
-|![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/main.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/pid.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/blob/master/resources/screenshots/sample.png?raw=true) | 
+|![](https://github.com/DavidAwad/pebbledex/resources/screenshots/main.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/resources/screenshots/pid.png?raw=true) | ![](https://github.com/DavidAwad/pebbledex/resources/screenshots/sample.png?raw=true) | 
 
 
 
