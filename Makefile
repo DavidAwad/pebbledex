@@ -1,16 +1,19 @@
-PHONE = 192.168.1.24
+# David Awad
+#
+# export PHONE=10.33.76.245
 
 all:
 	pebble build
-	pebble install --phone $(PHONE) &
+	ifndef $(PHONE)
+		$(error PHONE is not set!!)
+	endif
+	pebble install --phone $(PHONE)
 
 logs:
 	pebble logs --phone $(PHONE)
 
 
-debug:	
+debug:
 
-screen: # make clean f_name
-	pebble screenshot --phone $(PHONE) ${f_name} 
-
-
+screenshot: # make clean f_name
+	pebble screenshot --phone $(PHONE) ${f_name}
