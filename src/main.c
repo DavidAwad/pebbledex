@@ -1,8 +1,8 @@
 /*
  * @Author David Awad
  * Simple Pokedex App for Pebble
- * 
-*/ 
+ *
+*/
 #include <pebble.h>
 #include <string.h>
 
@@ -24,7 +24,7 @@ static uint16_t get_num_rows_callback(MenuLayer *menu_layer, uint16_t section_in
 int rand_rng(int low, int high){
     int ret;
     ret = low + (rand() % (high - low));
-    return ret; 
+    return ret;
 }
 
 static void draw_row_callback(GContext *ctx, const Layer *cell_layer, MenuIndex *cell_index, void *context) {
@@ -38,17 +38,6 @@ static void draw_row_callback(GContext *ctx, const Layer *cell_layer, MenuIndex 
     case 2:
       menu_cell_basic_draw(ctx, cell_layer, "Settings", NULL, NULL);
       break;
-    /*
-    case 1:
-      menu_cell_basic_draw(ctx, cell_layer, "Text Animation", NULL, NULL);
-      break;
-    case 2:
-      menu_cell_basic_draw(ctx, cell_layer, "Progress Bar", NULL, NULL);
-      break;
-    case 3:
-      menu_cell_basic_draw(ctx, cell_layer, "Debug", NULL, NULL);
-      break;
-      */
     default:
       break;
   }
@@ -62,15 +51,21 @@ static int16_t get_cell_height_callback(struct MenuLayer *menu_layer, MenuIndex 
 }
 
 static void pin_complete_callback(PIN pin, void *context) {
-  // callback function from pin, render pokedex entry with selected pkmn 
+  // callback function from pin, render pokedex entry with selected pkmn
   APP_LOG(APP_LOG_LEVEL_INFO, "Pin was %d %d %d", pin.digits[0], pin.digits[1], pin.digits[2]);
   pin_window_pop((PinWindow*)context, true);
-  
-  int pkmn_number = 100*pin.digits[0] + 10*pin.digits[1] + pin.digits[2]; 
-  
+
+  int pkmn_number;
+  pkmn_number = 100*pin.digits[0] + 10*pin.digits[1] + pin.digits[2];
+
   APP_LOG(APP_LOG_LEVEL_INFO, "number was %d", pkmn_number);
 
-  pkmn_window_push(pkmn_number); 
+  if (pkmn_number > 151) {
+    APP_LOG(APP_LOG_LEVEL_INFO, "%d exceeds pokedex bounds", pkmn_number);
+    return;
+  }
+
+  pkmn_window_push(pkmn_number);
 }
 
 static void select_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index, void *context) {
@@ -83,7 +78,7 @@ static void select_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index,
       }
       break;
     case 1: // debug option in menu
-      pkmn_window_push(rand_rng(1, 151)); 
+      pkmn_window_push(rand_rng(1, 151));
       break;
     case 2: // show some text
       text_animation_window_push();
